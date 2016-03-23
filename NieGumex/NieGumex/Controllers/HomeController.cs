@@ -10,7 +10,7 @@ namespace NieGumex.Controllers
     {
         public ActionResult Index()
         {
-            //jakas zmiana
+            //loczek to CWEEEEEL
             return View();
         }
 
