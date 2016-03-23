@@ -10,6 +10,7 @@ namespace NieGumex.Controllers
     {
         public ActionResult Index()
         {
+            //jakas zmiana
             return View();
         }
 
