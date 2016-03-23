@@ -10,7 +10,7 @@ namespace NieGumex.Controllers
     {
         public ActionResult Index()
         {
-            //jakas zmiana
+            //dupa blada marmolada
             return View();
         }
 
