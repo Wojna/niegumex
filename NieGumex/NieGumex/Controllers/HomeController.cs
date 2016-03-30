@@ -11,6 +11,7 @@ namespace NieGumex.Controllers
         public ActionResult Index()
         {
             //tralalalal
+            //dodane o 17:30 
             return View();
         }
 
