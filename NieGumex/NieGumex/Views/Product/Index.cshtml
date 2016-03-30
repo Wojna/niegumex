@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.LiczbaKompletow)
         </th>
+        <th>
+            Wybierz
+        </th>
         <th></th>
     </tr>
 
@@ -35,11 +38,20 @@
             @Html.DisplayFor(modelItem => item.LiczbaKompletow)
         </td>
         <td>
+            <input type="checkbox" />
+        </td>
+
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
         </td>
+
     </tr>
 }
+    
 
 </table>
+<div>    
+        <input type="submit" value="Kup" class="btn btn-default" />    
+</div>

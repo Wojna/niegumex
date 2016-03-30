@@ -20,7 +20,7 @@ namespace NieGumex.Models
         public decimal Cena { get; set; }
 
         [Required]
-        [Display(Name ="Liczba Kompletów")]
+        [Display(Name ="Liczba Dostepnych Kompletów")]
         public int LiczbaKompletow { get; set; }
     }
 }
