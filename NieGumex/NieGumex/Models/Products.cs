@@ -16,7 +16,7 @@ namespace NieGumex.Models
         [StringLength(50,MinimumLength =4)]
         public string Nazwa { get; set; }
 
-        [Required]
+        [Required]        
         public decimal Cena { get; set; }
 
         [Required]
