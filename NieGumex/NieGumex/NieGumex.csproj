@@ -270,6 +270,7 @@
     <Content Include="Views\Factures\Details.cshtml" />
     <Content Include="Views\Factures\Edit.cshtml" />
     <Content Include="Views\Factures\Index.cshtml" />
+    <Content Include="Views\Product\Cart.cshtml" />
     <None Include="Web.Wojna.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,6 +21,11 @@ namespace NieGumex.Controllers
             return View(db.Products.ToList());
         }
 
+        public ActionResult Cart()
+        {
+            return View();
+        }
+
         // GET: Product/Details/5
         public ActionResult Details(int? id)
         {
