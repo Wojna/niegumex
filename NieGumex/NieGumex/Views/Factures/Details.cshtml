@@ -1,0 +1,138 @@
+﻿@model NieGumex.Models.Facture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Facture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FactureName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FactureName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataWystawienia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataWystawienia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Miejscowosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miejscowosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ulica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ulica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumerDomu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumerDomu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KodPocztowy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KodPocztowy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produkt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produkt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ilosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenaNetto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CenaNetto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenaBrutto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CenaBrutto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StawkaVat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StawkaVat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FactureID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contex\ProduktyContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FacturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -191,8 +192,13 @@
     <Compile Include="Migrations\201604071359004_07.04.Designer.cs">
       <DependentUpon>201604071359004_07.04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604071630239_migracja704.cs" />
+    <Compile Include="Migrations\201604071630239_migracja704.Designer.cs">
+      <DependentUpon>201604071630239_migracja704.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Facture.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Products.cs" />
@@ -259,6 +265,11 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Factures\Create.cshtml" />
+    <Content Include="Views\Factures\Delete.cshtml" />
+    <Content Include="Views\Factures\Details.cshtml" />
+    <Content Include="Views\Factures\Edit.cshtml" />
+    <Content Include="Views\Factures\Index.cshtml" />
     <None Include="Web.Wojna.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -289,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604071359004_07.04.resx">
       <DependentUpon>201604071359004_07.04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604071630239_migracja704.resx">
+      <DependentUpon>201604071630239_migracja704.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,6 +11,6 @@ namespace NieGumex.Contex
     public class ProduktyContext : DbContext
     {
         public DbSet<Products> Products { get; set; }
-        //cosik
+        public DbSet<Facture> Facture { get; set; }
     }
 }
