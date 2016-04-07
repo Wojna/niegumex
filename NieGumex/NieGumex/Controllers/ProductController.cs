@@ -15,6 +15,13 @@ namespace NieGumex.Controllers
     {
         private ProduktyContext db = new ProduktyContext();
 
+
+        public ActionResult Cart()
+        {
+            return View();
+        }
+
+
         // GET: Product
         public ActionResult Index()
         {
