@@ -46,11 +46,12 @@
             @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
         </td>
+
     </tr>
 }
     
 
 </table>
-<div>             
-        <input class="btn btn-default" value="Kup" onclick="location.href='@Url.Action("Cart", "Product")'" />
+<div>    
+    <input class="btn btn-default" value="Kup" onclick="location.href='@Url.Action("Cart", "Product")'" />    
 </div>
