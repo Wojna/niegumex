@@ -6,56 +6,12 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FactureName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataWystawienia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwisko)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Miejscowosc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ulica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumerDomu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KodPocztowy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produkt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ilosc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CenaNetto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CenaBrutto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StawkaVat)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -64,51 +20,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.FactureName)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.DataWystawienia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwisko)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Miejscowosc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ulica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumerDomu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KodPocztowy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Produkt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ilosc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CenaNetto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CenaBrutto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StawkaVat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FactureID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FactureID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.FactureID }) |            
+            @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-default" })            
             @Html.ActionLink("Delete", "Delete", new { id=item.FactureID })
         </td>
     </tr>

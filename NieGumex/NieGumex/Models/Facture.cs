@@ -16,6 +16,8 @@ namespace NieGumex.Models
         public string FactureName { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataWystawienia { get; set; }
 
         [Required]
