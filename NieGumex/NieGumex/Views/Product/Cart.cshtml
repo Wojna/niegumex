@@ -1,7 +1,40 @@
-﻿
+﻿@using NieGumex.ViewModels
+
 @{
     ViewBag.Title = "Cart";
 }
 
 <h2>Cart</h2>
 
+@{
+    var Products = (List<ProductsVm>) Session["Koszyk"];
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nazwa")
+        </th>
+        <th>
+            @Html.DisplayName("Cena")
+        </th>
+        <th>
+            @Html.DisplayName("Liczba Dostepnych Kompletów")
+        </th>
+    </tr>
+
+    @foreach (var product in Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => product.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(m => product.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(m => product.LiczbaKompletow)
+            </td>
+        </tr>
+    }
+</table>

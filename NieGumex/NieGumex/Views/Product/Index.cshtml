@@ -1,56 +1,67 @@
-﻿@model IEnumerable<NieGumex.Models.Products>
+﻿@model List<NieGumex.ViewModels.ProductsVm>
 
-@{
+    @{
     ViewBag.Title = "Index";
+    }
+
+    <h2>Lista produktów</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @using(Html.BeginForm("Index", "Product"))
+    {
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Nazwa")
+            </th>
+            <th>
+                @Html.DisplayName("Cena")
+            </th>
+            <th>
+                @Html.DisplayName("Liczba Dostepnych Kompletów")
+            </th>
+            <th>
+                Wybierz se cos
+            </th>
+            <th></th>
+        </tr>
+
+@for(var i = 0; i < Model.Count(); i++)
+{
+        <tr>
+            <td>
+                @Model[i].Nazwa
+                <input type="hidden" name="[@i].ProductID" value="@Model[i].ProductID" />
+                <input type="hidden" name="[@i].Nazwa" value="@Model[i].Nazwa"/>
+            </td>
+            <td>
+                @Model[i].Cena
+                <input type="hidden" name="[@i].Cena" value="@Model[i].Cena" />
+            </td>
+            <td>
+                @Model[i].LiczbaKompletow
+                <input type="hidden" name="[@i].LiczbaKompletow" value="@Model[i].LiczbaKompletow" />
+            </td>
+            <td>
+                <input type="checkbox" name="[@i].WantIt" value="true">
+                <input type="hidden" name="[@i].WantIt" value="false">
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=Model[i].ProductID }) |
+                @Html.ActionLink("Details", "Details", new { id=Model[i].ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=Model[i].ProductID })
+            </td>
+        </tr> 
 }
 
-<h2>Lista produktów</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nazwa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cena)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LiczbaKompletow)
-        </th>
-        <th>
-            Wybierz se cos
-        </th>
-        <th></th>
-    </tr>
+    </table>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cena)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LiczbaKompletow)
-        </td>
-        <td>
-            <input type="checkbox" />
-        </td>
+    <input type="submit" class="btn btn-default" id="submit-products-form" value="Kup" />
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
-}
-    
-
-</table>
-<div>             
-        <input class="btn btn-default" value="Kup" onclick="location.href='@Url.Action("Cart", "Product")'" />
-</div>
+    }

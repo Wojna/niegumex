@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NieGumex.Contex;
 using NieGumex.Models;
+using NieGumex.ViewModels;
 
 namespace NieGumex.Controllers
 {
@@ -15,17 +16,24 @@ namespace NieGumex.Controllers
     {
         private ProduktyContext db = new ProduktyContext();
 
-
-        public ActionResult Cart()
-        {
-            return View();
-        }
-
-
         // GET: Product
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var model = db.Products.Select(product => new ProductsVm
+            {
+                Cena = product.Cena, LiczbaKompletow = product.LiczbaKompletow, Nazwa = product.Nazwa, ProductID = product.ProductID, WantIt = false
+            }).ToList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(List<ProductsVm> model)
+        {
+
+            Session["Koszyk"] = model.Where(e => e.WantIt).ToList();
+
+            return RedirectToAction("Cart");
         }
 
         public ActionResult Cart()
