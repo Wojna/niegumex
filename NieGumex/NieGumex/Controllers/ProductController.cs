@@ -33,6 +33,10 @@ namespace NieGumex.Controllers
 
             Session["Koszyk"] = model.Where(e => e.WantIt).ToList();
 
+            
+
+            
+            
             return RedirectToAction("Cart");
         }
 

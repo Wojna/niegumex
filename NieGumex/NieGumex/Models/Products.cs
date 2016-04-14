@@ -22,5 +22,6 @@ namespace NieGumex.Models
         [Required]
         [Display(Name ="Liczba Dostepnych Kompletów")]
         public int LiczbaKompletow { get; set; }
+
     }
 }

@@ -17,6 +17,7 @@ namespace NieGumex.ViewModels
         [Required]
         [Display(Name = "Liczba Dostepnych Kompletów")]
         public int LiczbaKompletow { get; set; }
+        
 
         public bool WantIt { get; set; }
     }

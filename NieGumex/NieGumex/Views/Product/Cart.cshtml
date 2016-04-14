@@ -7,7 +7,7 @@
 <h2>Cart</h2>
 
 @{
-    var Products = (List<ProductsVm>) Session["Koszyk"];
+    var Products = (List<ProductsVm>)Session["Koszyk"];
 }
 
 <table class="table">
@@ -38,3 +38,28 @@
         </tr>
     }
 </table>
+
+@{
+    var total = 0.0m;
+
+    foreach (var item in Products)
+    {
+        total +=item.Cena;
+
+    }
+      
+}
+<table>
+    <tr>
+        <th style="color:red">W sumie: </th>
+        <td>@total zł</td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
