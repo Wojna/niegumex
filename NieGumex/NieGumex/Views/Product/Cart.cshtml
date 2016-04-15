@@ -44,10 +44,10 @@
 
     foreach (var item in Products)
     {
-        total +=item.Cena;
+        total += item.Cena;
 
     }
-      
+
 }
 <table>
     <tr>
@@ -56,10 +56,19 @@
     </tr>
 
 </table>
-<input class="btn btn-default" value="Potwierdz" onclick="location.href='@Url.Action("Create", "Factures")'" />
 
+@{if (total != 0.0m)
+    {
+    <input class="btn btn-default" value="Potwierdz" onclick="location.href='@Url.Action("Create", "Factures")'" />
+    }
+    else
+    {
+        <table>
+            <tr style="color:red">Brak produktów do zamowienia</tr>
+        </table>
+    }
 
-
+}
 
 
 
