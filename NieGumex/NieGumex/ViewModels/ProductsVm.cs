@@ -19,6 +19,6 @@ namespace NieGumex.ViewModels
         public int LiczbaKompletow { get; set; }
         
 
-        public bool WantIt { get; set; }
+        public int WantIt { get; set; }
     }
 }

@@ -19,12 +19,17 @@
             @Html.DisplayName("Cena")
         </th>
         <th>
-            @Html.DisplayName("Liczba Dostepnych Kompletów")
+            @Html.DisplayName("Liczba Zakupionych Kompletów")
+        </th>
+        <th>
+            @Html.DisplayName("Cena")
         </th>
     </tr>
-
+   
     @foreach (var product in Products)
     {
+        var totalproduktow = 0.0m;
+        totalproduktow = product.Cena * product.WantIt;
         <tr>
             <td>
                 @Html.DisplayFor(m => product.Nazwa)
@@ -33,18 +38,20 @@
                 @Html.DisplayFor(m => product.Cena)
             </td>
             <td>
-                @Html.DisplayFor(m => product.LiczbaKompletow)
+                @Html.DisplayFor(m => product.WantIt)
             </td>
+            <td>
+        @Html.DisplayFor(m => totalproduktow)
+    </td>
         </tr>
     }
 </table>
 
 @{
     var total = 0.0m;
-
     foreach (var item in Products)
     {
-        total += item.Cena;
+        total += item.WantIt*item.Cena;
 
     }
 
@@ -60,6 +67,7 @@
 @{if (total != 0.0m)
     {
     <input class="btn btn-default" value="Potwierdz" onclick="location.href='@Url.Action("Create", "Factures")'" />
+        
     }
     else
     {

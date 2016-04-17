@@ -39,7 +39,7 @@ namespace NieGumex.Controllers
 
         // GET: Factures/Create
         public ActionResult Create()
-        {
+        {            
             return View();
         }
 

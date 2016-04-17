@@ -10,6 +10,7 @@ using NieGumex.Contex;
 using NieGumex.Models;
 using NieGumex.ViewModels;
 
+
 namespace NieGumex.Controllers
 {
     public class ProductController : Controller
@@ -17,11 +18,11 @@ namespace NieGumex.Controllers
         private ProduktyContext db = new ProduktyContext();
 
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var model = db.Products.Select(product => new ProductsVm
             {
-                Cena = product.Cena, LiczbaKompletow = product.LiczbaKompletow, Nazwa = product.Nazwa, ProductID = product.ProductID, WantIt = false
+                Cena = product.Cena, LiczbaKompletow = product.LiczbaKompletow, Nazwa = product.Nazwa, ProductID = product.ProductID, WantIt = 0
             }).ToList();
 
             return View(model);
@@ -30,15 +31,12 @@ namespace NieGumex.Controllers
         [HttpPost]
         public ActionResult Index(List<ProductsVm> model)
         {
-
-            Session["Koszyk"] = model.Where(e => e.WantIt).ToList();
-
             
-
-            
+            Session["Koszyk"] = model.Where(e => e.WantIt!=0).ToList();
             
             return RedirectToAction("Cart");
         }
+
 
         public ActionResult Cart()
         {
@@ -82,6 +80,8 @@ namespace NieGumex.Controllers
 
             return View(products);
         }
+
+
 
         // GET: Product/Edit/5
         public ActionResult Edit(int? id)
