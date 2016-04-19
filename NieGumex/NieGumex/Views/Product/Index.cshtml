@@ -10,59 +10,61 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 
-    @using(Html.BeginForm("Index", "Product"))
+    @using (Html.BeginForm("Index", "Product"))
     {
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayName("Nazwa")
-            </th>
-            <th>
-                @Html.DisplayName("Cena")
-            </th>
-            <th>
-                @Html.DisplayName("Liczba Dostepnych Kompletów")
-            </th>
-            <th>
-                Wybierz ilość kompletow
-            </th>
-            <th></th>
-        </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Nazwa")
+                </th>
+                <th>
+                    @Html.DisplayName("Cena")
+                </th>
+                <th>
+                    @Html.DisplayName("Liczba Dostepnych Kompletów")
+                </th>
+                <th>
+                    Wybierz ilość kompletow
+                </th>
+                <th></th>
+            </tr>
 
-@for(var i = 0; i < Model.Count(); i++)
-{
-        <tr>
-            <td>
-                @Model[i].Nazwa
-                <input type="hidden" name="[@i].ProductID" value="@Model[i].ProductID" />
-                <input type="hidden" name="[@i].Nazwa" value="@Model[i].Nazwa"/>
-            </td>
-            <td>
-                @Model[i].Cena
-                <input type="hidden" name="[@i].Cena" value="@Model[i].Cena" />
-            </td>
-            <td>
-                @Model[i].LiczbaKompletow
-                <input type="hidden" name="[@i].LiczbaKompletow" value="@Model[i].LiczbaKompletow" />
-            </td>
-            <td>
-                <input type="text" name="[@i].WantIt" value=""/>
-               
-            </td>
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Model[i].Nazwa
+                        <input type="hidden" name="[@i].ProductID" value="@Model[i].ProductID" />
+                        <input type="hidden" name="[@i].Nazwa" value="@Model[i].Nazwa" />
+                    </td>
+                    <td>
+                        @Model[i].Cena
+                        <input type="hidden" name="[@i].Cena" value="@Model[i].Cena" />
+                    </td>
+                    <td>
+                        @Model[i].LiczbaKompletow
+                        <input type="hidden" name="[@i].LiczbaKompletow" value="@Model[i].LiczbaKompletow" />
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].WantIt" value="@Model[i].WantIt" />
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=Model[i].ProductID }) |
-                @Html.ActionLink("Details", "Details", new { id=Model[i].ProductID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=Model[i].ProductID })
-            </td>
-        </tr>
+                    </td>
 
-}
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model[i].ProductID }) |
+                        @Html.ActionLink("Details", "Details", new { id = Model[i].ProductID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = Model[i].ProductID })
+                    </td>
+                </tr>
+
+            }
+
+            
+        </table>
 
 
-    </table>
-
-    <input type="submit" class="btn btn-default" id="submit-products-form" value="Kup" />
-
+        <div>
+            <input type="submit" class="btn btn-default" id="submit-products-form" value="Kup" />
+        </div>
     }

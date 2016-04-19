@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using NieGumex.Contex;
 using NieGumex.Models;
+using NieGumex.ViewModels;
 
 namespace NieGumex.Controllers
 {
@@ -39,7 +40,15 @@ namespace NieGumex.Controllers
 
         // GET: Factures/Create
         public ActionResult Create()
-        {            
+        {
+            var produkty = (List<ProductsVm>)Session["Koszyk"];
+
+            foreach (var produkt in produkty)
+            {
+                var kompletyModel = db.Products.Find(produkt.ProductID);
+                kompletyModel.LiczbaKompletow -= produkt.WantIt;
+            }
+            db.SaveChanges();
             return View();
         }
 
