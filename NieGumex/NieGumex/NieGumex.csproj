@@ -276,6 +276,9 @@
     <Content Include="Views\Factures\Edit.cshtml" />
     <Content Include="Views\Factures\Index.cshtml" />
     <Content Include="Views\Product\Cart.cshtml" />
+    <None Include="Web.Darek.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Dawid.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -349,6 +352,15 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dawid|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Darek|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
