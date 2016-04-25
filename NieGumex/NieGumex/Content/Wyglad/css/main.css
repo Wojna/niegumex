@@ -155,9 +155,10 @@ h5, h6          { font-weight: bolder }
 
 .billboard .caption h1{
     font-family: "raleway-bold";
-    font-size: 50px;
+    font-size: 100px;
     font-weight: bold; 
     margin-bottom: 30px;
+/*    napis NIEGUMEX    */
 }
 
 .billboard .caption.light h1{
