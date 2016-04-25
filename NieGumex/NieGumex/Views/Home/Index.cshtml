@@ -1,31 +1,37 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_wyglad.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>jhvhgvhjvhgj</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<section class="services wrapper">
+    <ul class="clearfix">
+        <li class="animated wow fadeInDown">
+            <img class="icon" src="@Url.Content("~/Content/Wyglad/")img/icon1.png" alt="" />
+            <span class="separator"></span>
+            <h2>Opony</h2>
+            <p>
+                Specjalizujemy się w sprzedaży najlepszych opon na rynku bla bla bla
+            </p>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".2s">
+            <img class="icon" src="@Url.Content("~/Content/Wyglad/")img/icon2.png" alt="" />
+            <span class="separator"></span>
+            <h2>Wyważanie</h2>
+            <p>Oferujemy usługi wyważania opon bla bla bla</p>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".4s">
+            <img class="icon" src="@Url.Content("~/Content/Wyglad/")img/icon3.png" alt="" />
+            <span class="separator"></span>
+            <h2>Ustawianie zbieżnośći</h2>
+            <p>Oferujmy usługi ustawiania zbieżności kół</p>
+        </li>
+    </ul>
+</section>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<section class="video">
+    <img style="visibility: visible; animation-name: fadeInDown;" src="img/video_logo.png" alt="" class="video_logo animated wow fadeInDown animated">
+    <h3 style="visibility: visible; animation-name: fadeInDown;" class="animated wow fadeInDown animated">Kim jesteśmy i co robimy</h3>
+    <a style="visibility: visible; animation-duration: 2s; animation-name: flipInX;" href="https://www.youtube.com/watch?v=693AZ3Oudvw" id="play_btn" class="fancybox animated wow flipInX animated" data-wow-duration="2s"></a>
+</section>
+

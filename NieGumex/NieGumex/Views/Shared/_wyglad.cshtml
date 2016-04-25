@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <title>NieGumex - znamy się na gumach</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Grupa 2">
+    <meta name="description" content="NieGumex" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/reset.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/fancybox-thumbs.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/fancybox-buttons.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/fancybox.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/animate.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Wyglad/")css/main.css">
+
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/fancybox.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/fancybox-buttons.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/fancybox-media.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/fancybox-thumbs.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/wow.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/Wyglad/")js/main.js"></script>
+</head>
+
+<body>
+    <section class="billboard dark">
+        <header class="wrapper dark">
+            <a href="#"><img class="logo" src="img/logo_dark.png" alt="" /></a>
+            <nav>
+                <ul>
+                    <li><strong>@Html.ActionLink("O nas", "About", "Home")</strong></li>                    
+                    <li><strong>@Html.ActionLink("Produkty", "Index", "Product")</strong></li>
+                    <li><strong>@Html.ActionLink("Faktury", "Index", "Factures")</strong></li>
+                    
+                    <li><a href=""><strong>Kontakt</strong></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="caption dark animated wow fadeInDown clearfix">
+            <h1><strong>NieGumex</strong></h1>
+            <p><strong>Nie gumex wita was, kilka opon wymienicie se tu czy jak to szło</strong></p>
+            <hr>
+        </div>
+        <div class="shadow"></div>
+    </section>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
