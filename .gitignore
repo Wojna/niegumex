@@ -4,7 +4,8 @@
 # Custom
 *.po
 *.mdf
-
+*.config
+NieGumex/Packages/*
 
 # User-specific files
 *.suo

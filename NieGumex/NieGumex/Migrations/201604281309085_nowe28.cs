@@ -3,7 +3,7 @@ namespace NieGumex.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class factures_data : DbMigration
+    public partial class nowe28 : DbMigration
     {
         public override void Up()
         {

@@ -53,9 +53,8 @@
     foreach (var item in Products)
     {
         total += item.WantIt*item.Cena;
-
     }
-
+    ViewBag.CenaOpon = total;
 }
 <table>
     <tr>
