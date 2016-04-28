@@ -20,6 +20,8 @@ namespace NieGumex.Controllers
         // GET: Factures
         public async Task<ActionResult> Index()
         {
+
+
             return View(await db.Facture.ToListAsync());
         }
 
@@ -42,14 +44,37 @@ namespace NieGumex.Controllers
         public ActionResult Create()
         {
             var produkty = (List<ProductsVm>)Session["Koszyk"];
+            var factureName = db.Facture.OrderByDescending(a => a.FactureName).First().FactureName;
+            var productFacture = produkty.Select(a => a.Nazwa).Single();
+            var iloscFacture = produkty.Select(b => b.WantIt).Single();
+            var cenaFactures = (produkty.Select(c => c.Cena).Single()) * iloscFacture;
+            var cenanettoFactures = (cenaFactures*0.77m);
+
 
             foreach (var produkt in produkty)
             {
                 var kompletyModel = db.Products.Find(produkt.ProductID);
                 kompletyModel.LiczbaKompletow -= produkt.WantIt;
+                
             }
             db.SaveChanges();
-            return View();
+
+            var splited = factureName.Split(new string[] { "/" }, StringSplitOptions.None)[2];
+            int number;
+            int.TryParse(splited, out number);
+            number++;
+
+            var facture = new Facture
+            {
+                FactureName = factureName == null ? "Fac/" + DateTime.Now.Year.ToString() + "/1" : "Fac/" + DateTime.Now.Year.ToString() + "/" + number.ToString(),
+                Produkt = productFacture.ToString(),
+                Ilosc = iloscFacture,
+                CenaBrutto = cenaFactures,
+                CenaNetto = cenanettoFactures
+                
+            };
+
+            return View(facture);
         }
 
         // POST: Factures/Create

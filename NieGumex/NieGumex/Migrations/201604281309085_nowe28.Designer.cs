@@ -7,13 +7,13 @@ namespace NieGumex.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class nazwa : IMigrationMetadata
+    public sealed partial class nowe28 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nazwa));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(nowe28));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603301918014_nazwa"; }
+            get { return "201604281309085_nowe28"; }
         }
         
         string IMigrationMetadata.Source

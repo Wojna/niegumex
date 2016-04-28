@@ -21,8 +21,8 @@ namespace NieGumex.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
+            : base("ProduktyContext", throwIfV1Schema: false)
+        { 
         }
 
         public static ApplicationDbContext Create()
