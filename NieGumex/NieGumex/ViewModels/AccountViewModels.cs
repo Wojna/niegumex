@@ -79,6 +79,30 @@ namespace NieGumex.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        public string Nazwa { get; set; }
+
+        [Required]
+        public string Miejscowosc { get; set; }
+
+        [Required]
+        public string Ulica { get; set; }
+
+        [Required]
+        public int nrDomu { get; set; }
+
+        [Required]
+        public string kodPocztowy { get; set; }
+
+        [Required]
+        public string NIP { get; set; }
     }
 
     public class ResetPasswordViewModel

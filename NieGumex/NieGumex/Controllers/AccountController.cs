@@ -151,7 +151,19 @@ namespace NieGumex.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Nazwa =model.Nazwa,       
+                    Miejscowosc =model.Miejscowosc,     
+                    Ulica =model.Ulica,        
+                    nrDomu = model.nrDomu,       
+                    kodPocztowy =model.kodPocztowy,         
+                    NIP =model.NIP
+    };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

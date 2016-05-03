@@ -43,12 +43,13 @@ namespace NieGumex.Controllers
         // GET: Factures/Create
         public ActionResult Create()
         {
-            var produkty = (List<ProductsVm>)Session["Koszyk"];
+            var produkty = (List<ProductsVm>)Session["Koszyk"];          
             var factureName = db.Facture.OrderByDescending(a => a.FactureName).First().FactureName;
             var productFacture = produkty.Select(a => a.Nazwa).Single();
             var iloscFacture = produkty.Select(b => b.WantIt).Single();
             var cenaFactures = (produkty.Select(c => c.Cena).Single()) * iloscFacture;
             var cenanettoFactures = (cenaFactures*0.77m);
+            
 
 
             foreach (var produkt in produkty)
