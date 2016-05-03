@@ -23,9 +23,10 @@
         </td>
         
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FactureID }) |            
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.FactureID }, new { @class = "btn btn-default" })             
             @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-default" })            
-            @Html.ActionLink("Delete", "Delete", new { id=item.FactureID })
+            @Html.ActionLink("Usuń", "Delete", new { id=item.FactureID }, new { @class = "btn btn-default" })
+            @Html.ActionLink("EDIFACT", "Edifact", new { id = item.FactureID }, new { @class = "btn btn-default" })
         </td>
     </tr>
 }

@@ -22,7 +22,7 @@ namespace NieGumex.Controllers
         {
             var model = db.Products.Select(product => new ProductsVm
             {
-                Cena = product.Cena, LiczbaKompletow = product.LiczbaKompletow, Nazwa = product.Nazwa, ProductID = product.ProductID, WantIt = 0
+                Cena = product.Cena, LiczbaKompletow = product.LiczbaKompletow, Nazwa = product.Nazwa, ProductID = product.ProductID, FotoOpona= product.FotoOpona, EAN = product.EAN, WantIt = 0
             }).ToList();
 
             return View(model);
@@ -69,7 +69,7 @@ namespace NieGumex.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,Nazwa,Cena,LiczbaKompletow")] Products products)
+        public ActionResult Create([Bind(Include = "ProductID,Nazwa,Cena,LiczbaKompletow,FotoOpona,EAN")] Products products)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace NieGumex.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Nazwa,Cena,LiczbaKompletow")] Products products)
+        public ActionResult Edit([Bind(Include = "ProductID,Nazwa,Cena,LiczbaKompletow,EAN")] Products products)
         {
             if (ModelState.IsValid)
             {

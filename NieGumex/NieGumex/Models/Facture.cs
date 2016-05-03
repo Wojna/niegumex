@@ -58,5 +58,16 @@ namespace NieGumex.Models
 
         [Required]
         public string StawkaVat { get; set; }
+
+        [Required]
+        public string numerKonta { get; set; }
+
+        [Required]
+        public string Wojewodztwo { get; set; }
+
+        [Required]
+        public DateTime DataPlatnosci { get; set; }
+        [Required]
+        public string EAN { get; set; }
     }
 }

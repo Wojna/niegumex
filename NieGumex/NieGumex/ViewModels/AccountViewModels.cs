@@ -103,6 +103,14 @@ namespace NieGumex.Models
 
         [Required]
         public string NIP { get; set; }
+
+        [Required]
+        public string numerKonta { get; set; }
+
+        public string GNL { get; set; }
+
+        [Required]
+        public string Wojewodztwo { get; set; }
     }
 
     public class ResetPasswordViewModel

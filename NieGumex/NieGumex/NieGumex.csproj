@@ -179,6 +179,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201604281229246_Initial.cs" />
     <Compile Include="Migrations\201604281229246_Initial.Designer.cs">
       <DependentUpon>201604281229246_Initial.cs</DependentUpon>
@@ -190,6 +192,22 @@
     <Compile Include="Migrations\201605031011311_Ident.cs" />
     <Compile Include="Migrations\201605031011311_Ident.Designer.cs">
       <DependentUpon>201605031011311_Ident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031436005_nowa03.cs" />
+    <Compile Include="Migrations\201605031436005_nowa03.Designer.cs">
+      <DependentUpon>201605031436005_nowa03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031704457_nowa04.cs" />
+    <Compile Include="Migrations\201605031704457_nowa04.Designer.cs">
+      <DependentUpon>201605031704457_nowa04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031750250_nowa05.cs" />
+    <Compile Include="Migrations\201605031750250_nowa05.Designer.cs">
+      <DependentUpon>201605031750250_nowa05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031850553_nowa06.cs" />
+    <Compile Include="Migrations\201605031850553_nowa06.Designer.cs">
+      <DependentUpon>201605031850553_nowa06.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -204,6 +222,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Opony\1.jpg" />
+    <Content Include="Content\Images\Opony\2.jpg" />
+    <Content Include="Content\Images\Opony\3.jpg" />
     <Content Include="Content\Wyglad\img\billboard2.jpg" />
     <Content Include="Content\Wyglad\img\icon1.png" />
     <Content Include="Content\Wyglad\img\icon2.png" />
@@ -271,6 +292,7 @@
     <Content Include="Views\Factures\Edit.cshtml" />
     <Content Include="Views\Factures\Index.cshtml" />
     <Content Include="Views\Product\Cart.cshtml" />
+    <Content Include="Views\Factures\Edifact.cshtml" />
     <None Include="Web.Darek.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -309,6 +331,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605031011311_Ident.resx">
       <DependentUpon>201605031011311_Ident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031436005_nowa03.resx">
+      <DependentUpon>201605031436005_nowa03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031704457_nowa04.resx">
+      <DependentUpon>201605031704457_nowa04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031750250_nowa05.resx">
+      <DependentUpon>201605031750250_nowa05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031850553_nowa06.resx">
+      <DependentUpon>201605031850553_nowa06.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

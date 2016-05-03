@@ -1,8 +1,8 @@
 ﻿@model List<NieGumex.ViewModels.ProductsVm>
 
+@using NieGumex.Infrastructure
     @{
-        ViewBag.Title = "Index";
-        
+        ViewBag.Title = "Index";     
     }
 
     <h2>Lista produktów</h2>
@@ -13,9 +13,11 @@
 
     @using (Html.BeginForm("Index", "Product"))
     {
-
         <table class="table">
             <tr>
+                <th>
+                    @Html.DisplayName("Foto")
+                </th>
                 <th>
                     @Html.DisplayName("Nazwa")
                 </th>
@@ -34,6 +36,10 @@
             @for (var i = 0; i < Model.Count(); i++)
             {
                 <tr>
+                    <td>
+                        <img src="@Url.OponaFotoPath(Model[i].FotoOpona)" height="150" width="150"/>
+                        
+                    </td>
                     <td>
                         @Model[i].Nazwa
                         <input type="hidden" name="[@i].ProductID" value="@Model[i].ProductID" />
@@ -58,7 +64,6 @@
                         @Html.ActionLink("Delete", "Delete", new { id = Model[i].ProductID })
                     </td>
                 </tr>
-
             }
 
             

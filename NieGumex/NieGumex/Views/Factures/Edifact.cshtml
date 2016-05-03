@@ -1,13 +1,15 @@
-﻿@model NieGumex.Models.Facture
+﻿@using NieGumex.Models
+@model NieGumex.Models.Facture
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Edifact";
 }
 
+@*@{ var klient = (ApplicationUser)ViewBag.klient;}*@
 <h2>Details</h2>
 
 <div>
-    <h4>Facture</h4>
+    <h4>Factura</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -104,7 +106,6 @@
         <dd>
             @Html.DisplayFor(model => model.EAN)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Ilosc)
         </dt>
@@ -151,7 +152,47 @@
 
     </dl>
 </div>
+<hr />
+<div>
+    <h4>Faktura w standardzie EDIFACT</h4>
+    <hr />
+
+
+    UNH+1111111111+INVOIC:D:96A:EW'<br /> @*Dodać losową liczbe*@
+    BGM+380+@Model.FactureID 2+9'<br />
+    DTM+137:@DateTime.Now.Date.Year-@DateTime.Now.Month.ToString("d2")-@DateTime.Now.Day:102'<br />
+    DTM+356:@Model.DataWystawienia.ToString().Substring(0, 10):102'<br />
+    DTM+35:@Model.DataWystawienia.ToString().Substring(0, 10):102'<br />
+    DTM+171:@Model.DataWystawienia.ToString().Substring(0, 10):102'<br />
+    NAD+SU+f1f9d44e800346178af36aaa277235d0::9+NieGumex+ul. Gumiasta 69+Częstochowa+Częstochowskie+28-133+PL'<br />
+    FII+RB+39572057396500000347849305'<br />
+    RFF+VA:666-555-00-69'<br />
+    NAD+SCO+f1f9d44e800346178af36aaa277235d0::9+NieGumex+ul. Gumiasta 69+Częstochowa+Częstochowskie+28-133+PL'<br />
+    NAD+BY+@*@klient.GNL.Replace("-", "")*@::9+@Model.Nazwa+@Model.Ulica+@Model.Miejscowosc+@Model.Wojewodztwo+@Model.KodPocztowy+PL'<br />
+    FII+PB+@Model.numerKonta'<br />
+    RFF+VA:@Model.Nip'<br />
+    NAD+DP+@*@klient.GNL.Replace("-", "")*@::9+@Model.Nazwa+@Model.Ulica+@Model.Miejscowosc+@Model.Wojewodztwo+@Model.KodPocztowy+PL'<br />
+    CUX+2:PLN:4'<br />
+    PAT+1++5:3:D:30'<br />
+    DTM+13:@Model.DataPlatnosci.ToString().Substring(0, 10)'<br />
+    @*Dodawanie produktów (można ogarnąć wiele zamówień na raz)*@
+    LIN+@Html.DisplayFor(model => model.EAN):EN'<br />
+    QTY+47:@Html.DisplayFor(model => model.Ilosc):PCE'<br />
+    QTY+46:@Html.DisplayFor(model => model.Ilosc):PCE'<br />
+    MOA+66:@Html.DisplayFor(model => model.CenaNetto):PLN'<br />
+    MOA+124:@ViewBag.kwotVAT:PLN'<br />
+    UNS+S'<br />
+    CNT+@Html.DisplayFor(model => model.Ilosc):@Html.DisplayFor(model => model.Ilosc)'<br />
+    MOA+77:@Html.DisplayFor(model => model.CenaBrutto)'<br />
+    MOA+79:@Html.DisplayFor(model => model.CenaNetto)'<br />
+    MOA+124:@Html.DisplayFor(model => model.CenaBrutto)-@Html.DisplayFor(model => model.CenaNetto)'<br />
+    MOA+125:@Html.DisplayFor(model => model.CenaNetto)'<br />
+    TAX+7+VAT++@Html.DisplayFor(model => model.CenaNetto)+:::23+S'<br />
+    TAX+7+VAT++@Html.DisplayFor(model => model.CenaNetto)+:::23+S'<br />
+    UNT+31+1111111111'
+</div>
 <p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.FactureID }, new { @class = "btn btn-default" })
     @Html.ActionLink("Wróć", "Index", new { @class = "btn btn-default" })
 </p>
+
+

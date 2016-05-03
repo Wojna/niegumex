@@ -17,7 +17,10 @@ namespace NieGumex.ViewModels
         [Required]
         [Display(Name = "Liczba Dostepnych Kompletów")]
         public int LiczbaKompletow { get; set; }
-        
+        [Required]
+        public string FotoOpona { get; set; }
+        [Required]
+        public string EAN { get; set; }
 
         public int WantIt { get; set; }
     }

@@ -34,6 +34,14 @@ namespace NieGumex.Models
         [Required]
         public string NIP { get; set; }
 
+        [Required]
+        public string numerKonta { get; set; }
+
+        [Required]
+        public string GNL { get; set; }
+
+        [Required]
+        public string Wojewodztwo { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

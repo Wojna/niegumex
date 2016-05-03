@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using NieGumex.Contex;
 using NieGumex.Models;
 using NieGumex.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace NieGumex.Controllers
 {
@@ -40,25 +41,40 @@ namespace NieGumex.Controllers
             return View(facture);
         }
 
+        public async Task<ActionResult> Edifact(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Facture facture = await db.Facture.FindAsync(id);
+            if (facture == null)
+            {
+                return HttpNotFound();
+            }
+
+
+
+            return View(facture);
+        }
+
         // GET: Factures/Create
         public ActionResult Create()
         {
-            var produkty = (List<ProductsVm>)Session["Koszyk"];          
+         
+            var produkty = (List<ProductsVm>)Session["Koszyk"];
             var factureName = db.Facture.OrderByDescending(a => a.FactureName).First().FactureName;
             var productFacture = produkty.Select(a => a.Nazwa).Single();
             var iloscFacture = produkty.Select(b => b.WantIt).Single();
             var cenaFactures = (produkty.Select(c => c.Cena).Single()) * iloscFacture;
-            var cenanettoFactures = (cenaFactures*0.77m);
-            
-
+            var cenanettoFactures = (cenaFactures * 0.77m);
 
             foreach (var produkt in produkty)
             {
                 var kompletyModel = db.Products.Find(produkt.ProductID);
                 kompletyModel.LiczbaKompletow -= produkt.WantIt;
-                
+
             }
-            db.SaveChanges();
 
             var splited = factureName.Split(new string[] { "/" }, StringSplitOptions.None)[2];
             int number;
@@ -72,9 +88,13 @@ namespace NieGumex.Controllers
                 Ilosc = iloscFacture,
                 CenaBrutto = cenaFactures,
                 CenaNetto = cenanettoFactures
-                
+
             };
 
+                Decimal kwVAT = cenaFactures - cenanettoFactures;
+                ViewBag.kwotVAT = kwVAT;
+
+            db.SaveChanges();
             return View(facture);
         }
 
@@ -83,7 +103,7 @@ namespace NieGumex.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FactureID,FactureName,DataWystawienia,Imie,Nazwisko,Nazwa,Miejscowosc,Ulica,NumerDomu,KodPocztowy,Nip,Produkt,Ilosc,CenaNetto,CenaBrutto,StawkaVat")] Facture facture)
+        public async Task<ActionResult> Create([Bind(Include = "FactureID,FactureName,DataWystawienia,Imie,Nazwisko,Nazwa,Miejscowosc,Ulica,NumerDomu,KodPocztowy,Nip,Produkt,EAN,Ilosc,CenaNetto,CenaBrutto,StawkaVat,numerKonta,Wojewodztwo,DataPlatnosci")] Facture facture)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +135,7 @@ namespace NieGumex.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "FactureID,FactureName,DataWystawienia,Imie,Nazwisko,Nazwa,Miejscowosc,Ulica,NumerDomu,KodPocztowy,Nip,Produkt,Ilosc,CenaNetto,CenaBrutto,StawkaVat")] Facture facture)
+        public async Task<ActionResult> Edit([Bind(Include = "FactureID,FactureName,DataWystawienia,Imie,Nazwisko,Nazwa,Miejscowosc,Ulica,NumerDomu,KodPocztowy,Nip,Produkt,EAN,Ilosc,CenaNetto,CenaBrutto,StawkaVat,numerKonta,Wojewodztwo,DataPlatnosci")] Facture facture)
         {
             if (ModelState.IsValid)
             {

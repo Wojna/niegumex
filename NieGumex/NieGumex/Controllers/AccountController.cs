@@ -157,12 +157,16 @@ namespace NieGumex.Controllers
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Nazwa =model.Nazwa,       
-                    Miejscowosc =model.Miejscowosc,     
-                    Ulica =model.Ulica,        
-                    nrDomu = model.nrDomu,       
-                    kodPocztowy =model.kodPocztowy,         
-                    NIP =model.NIP
+                    Nazwa = model.Nazwa,
+                    Miejscowosc = model.Miejscowosc,
+                    Ulica = model.Ulica,
+                    nrDomu = model.nrDomu,
+                    kodPocztowy = model.kodPocztowy,
+                    NIP = model.NIP,
+                    numerKonta = model.numerKonta,
+                    GNL = Guid.NewGuid().ToString(),
+                    Wojewodztwo = model.Wojewodztwo
+
     };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
