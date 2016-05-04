@@ -9,8 +9,8 @@ namespace NieGumex.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "NieGumex.Contex.ProduktyContext";
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(NieGumex.Contex.ProduktyContext context)

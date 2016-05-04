@@ -181,34 +181,6 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201604281229246_Initial.cs" />
-    <Compile Include="Migrations\201604281229246_Initial.Designer.cs">
-      <DependentUpon>201604281229246_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604281309085_nowe28.cs" />
-    <Compile Include="Migrations\201604281309085_nowe28.Designer.cs">
-      <DependentUpon>201604281309085_nowe28.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605031011311_Ident.cs" />
-    <Compile Include="Migrations\201605031011311_Ident.Designer.cs">
-      <DependentUpon>201605031011311_Ident.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605031436005_nowa03.cs" />
-    <Compile Include="Migrations\201605031436005_nowa03.Designer.cs">
-      <DependentUpon>201605031436005_nowa03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605031704457_nowa04.cs" />
-    <Compile Include="Migrations\201605031704457_nowa04.Designer.cs">
-      <DependentUpon>201605031704457_nowa04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605031750250_nowa05.cs" />
-    <Compile Include="Migrations\201605031750250_nowa05.Designer.cs">
-      <DependentUpon>201605031750250_nowa05.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605031850553_nowa06.cs" />
-    <Compile Include="Migrations\201605031850553_nowa06.Designer.cs">
-      <DependentUpon>201605031850553_nowa06.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Facture.cs" />
@@ -321,29 +293,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604281229246_Initial.resx">
-      <DependentUpon>201604281229246_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604281309085_nowe28.resx">
-      <DependentUpon>201604281309085_nowe28.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605031011311_Ident.resx">
-      <DependentUpon>201605031011311_Ident.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605031436005_nowa03.resx">
-      <DependentUpon>201605031436005_nowa03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605031704457_nowa04.resx">
-      <DependentUpon>201605031704457_nowa04.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605031750250_nowa05.resx">
-      <DependentUpon>201605031750250_nowa05.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605031850553_nowa06.resx">
-      <DependentUpon>201605031850553_nowa06.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

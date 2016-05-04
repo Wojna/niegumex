@@ -63,7 +63,7 @@ namespace NieGumex.Controllers
         {
          
             var produkty = (List<ProductsVm>)Session["Koszyk"];
-            var factureName = db.Facture.OrderByDescending(a => a.FactureName).First().FactureName;
+            var factureName = db.Facture.OrderByDescending(a => a.FactureName).FirstOrDefault()?.FactureName;
             var productFacture = produkty.Select(a => a.Nazwa).Single();
             var iloscFacture = produkty.Select(b => b.WantIt).Single();
             var cenaFactures = (produkty.Select(c => c.Cena).Single()) * iloscFacture;
@@ -76,10 +76,13 @@ namespace NieGumex.Controllers
 
             }
 
-            var splited = factureName.Split(new string[] { "/" }, StringSplitOptions.None)[2];
-            int number;
-            int.TryParse(splited, out number);
-            number++;
+            var number = 0;
+            if (factureName != null)
+            {
+                var splited = factureName.Split(new string[] { "/" }, StringSplitOptions.None)[2];
+                int.TryParse(splited, out number);
+                number++;
+            }
 
             var facture = new Facture
             {
@@ -102,12 +105,14 @@ namespace NieGumex.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FactureID,FactureName,DataWystawienia,Imie,Nazwisko,Nazwa,Miejscowosc,Ulica,NumerDomu,KodPocztowy,Nip,Produkt,EAN,Ilosc,CenaNetto,CenaBrutto,StawkaVat,numerKonta,Wojewodztwo,DataPlatnosci")] Facture facture)
+        public ActionResult Create(Facture facture)
         {
             if (ModelState.IsValid)
             {
+                facture.DataPlatnosci=DateTime.Now;
+                facture.DataWystawienia=DateTime.Now;
                 db.Facture.Add(facture);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
