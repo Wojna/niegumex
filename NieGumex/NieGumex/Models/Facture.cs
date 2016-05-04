@@ -57,7 +57,7 @@ namespace NieGumex.Models
         public decimal CenaBrutto { get; set; }
 
         [Required]
-        public string StawkaVat { get; set; }
+        public string StawkaVat { get; set; } = "23";
 
         [Required]
         public string numerKonta { get; set; }
@@ -66,6 +66,7 @@ namespace NieGumex.Models
         public string Wojewodztwo { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime DataPlatnosci { get; set; }
         [Required]
         public string EAN { get; set; }

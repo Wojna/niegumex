@@ -87,8 +87,7 @@ namespace NieGumex.Controllers
                 Produkt = productFacture.ToString(),
                 Ilosc = iloscFacture,
                 CenaBrutto = cenaFactures,
-                CenaNetto = cenanettoFactures
-
+                CenaNetto = cenanettoFactures,
             };
 
                 Decimal kwVAT = cenaFactures - cenanettoFactures;

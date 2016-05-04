@@ -162,6 +162,7 @@
             @Html.LabelFor(model => model.StawkaVat, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <p>23%</p>
+                @Html.HiddenFor(model => model.StawkaVat)
             </div>
         </div>
 
