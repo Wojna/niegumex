@@ -9,7 +9,11 @@ using System.Web.Mvc;
 using NieGumex.Contex;
 using NieGumex.Models;
 using NieGumex.ViewModels;
-
+using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace NieGumex.Controllers
 {
@@ -56,6 +60,26 @@ namespace NieGumex.Controllers
                 return HttpNotFound();
             }
             return View(products);
+        }
+
+        public ActionResult BarcodeImage(String barcodeText)
+        {
+            // generating a barcode here. Code is taken from QrCode.Net library
+            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrCode = new QrCode();
+            qrEncoder.TryEncode(barcodeText, out qrCode);
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedModuleSize(4, QuietZoneModules.Four), Brushes.Black, Brushes.White);
+
+            Stream memoryStream = new MemoryStream();
+            renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, memoryStream);
+
+            // very important to reset memory stream to a starting position, otherwise you would get 0 bytes returned
+            memoryStream.Position = 0;
+
+            var resultStream = new FileStreamResult(memoryStream, "image/png");
+            resultStream.FileDownloadName = String.Format("{0}.png", barcodeText);
+
+            return resultStream;
         }
 
         // GET: Product/Create

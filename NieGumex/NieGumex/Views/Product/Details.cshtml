@@ -1,8 +1,12 @@
 ﻿@model NieGumex.Models.Products
+@using NieGumex.Infrastructure
+
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="~/scripts/JsBarcode.min.js"></script>
 
 @{
     ViewBag.Title = "Details";
-    
+
 }
 
 <h2>Details</h2>
@@ -41,11 +45,33 @@
 
         <dd>
             @Html.DisplayFor(model => model.EAN)
-        </dd>
 
+        </dd>
+        <dt>
+            FOTO:
+        </dt>
+        <dd>
+            <img src="@Url.OponaFotoPath(Model.FotoOpona)" height="150" width="150" />
+        </dd>
+        <dt>
+            Kod QR
+        </dt>
+        <dd>
+            <img src="/Product/BarcodeImage?barcodeText=@Html.DisplayFor(model => model.EAN)" />
+        </dd>
+        <dt>
+            Kod kreskowy
+        </dt>
+        <dd>
+            <img id="barcode" />
+        </dd>
     </dl>
 </div>
+<script>
+
+                $("#barcode").JsBarcode("@Html.DisplayFor(model => model.EAN)", { format: "CODE128", displayValue: true, fontSize: 20 });
+</script>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) 
+    @Html.ActionLink("Back to List", "Index", new { id = Model.ProductID })
 </p>
