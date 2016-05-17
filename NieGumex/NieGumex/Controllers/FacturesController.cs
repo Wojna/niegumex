@@ -67,6 +67,7 @@ namespace NieGumex.Controllers
             var productFacture = produkty.Select(a => a.Nazwa).Single();
             var iloscFacture = produkty.Select(b => b.WantIt).Single();
             var cenaFactures = (produkty.Select(c => c.Cena).Single()) * iloscFacture;
+            var ean = produkty.Select(c => c.EAN).Single();
             var cenanettoFactures = (cenaFactures * 0.77m);
 
             foreach (var produkt in produkty)
@@ -91,6 +92,7 @@ namespace NieGumex.Controllers
                 Ilosc = iloscFacture,
                 CenaBrutto = cenaFactures,
                 CenaNetto = cenanettoFactures,
+                EAN = ean,
             };
 
                 Decimal kwVAT = cenaFactures - cenanettoFactures;

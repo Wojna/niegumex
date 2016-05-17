@@ -66,8 +66,9 @@ namespace NieGumex.Models
         public string Wojewodztwo { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime DataPlatnosci { get; set; }
+
         [Required]
         public string EAN { get; set; }
     }
