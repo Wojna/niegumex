@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using NieGumex.Controllers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -27,6 +28,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Produkty","Index","Product")</li>
                     <li>@Html.ActionLink("Faktury", "Index", "Factures")</li>
+                    <li>@Html.ActionLink("Support","Support","Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

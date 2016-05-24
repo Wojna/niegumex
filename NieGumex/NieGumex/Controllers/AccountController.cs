@@ -166,7 +166,7 @@ namespace NieGumex.Controllers
                     //numerKonta = model.numerKonta,
                     //GNL = Guid.NewGuid().ToString(),
                     //Wojewodztwo = model.Wojewodztwo
-    };
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
