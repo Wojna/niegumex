@@ -215,6 +215,7 @@
     <Compile Include="Hubs\PrefHub.cs" />
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
+    <Compile Include="Infrastructure\XmlActionResult.cs" />
     <Compile Include="Migrations\201605311510119_nowa311.cs" />
     <Compile Include="Migrations\201605311510119_nowa311.Designer.cs">
       <DependentUpon>201605311510119_nowa311.cs</DependentUpon>

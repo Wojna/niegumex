@@ -1,4 +1,6 @@
 ﻿@using NieGumex.Models
+@using System.Xml
+@using System.Xml.Linq
 @model NieGumex.Models.Facture
 
 @{
@@ -9,9 +11,15 @@
 <h2>Szczegóły faktury z EDI</h2>
 
 <hr />
+
+
+@{ 
+    string xmlString = ViewBag.falturka;
+}
+
+@Html.TextArea("Info", XDocument.Parse(xmlString).ToString(), new { width = "1500", height = "500", @readonly = "readonly", @disabled = "disabled" })
 <p>
     @Html.ActionLink("Wróć", "Index")
-
 </p>
 
 

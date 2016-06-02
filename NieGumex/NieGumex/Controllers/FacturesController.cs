@@ -13,6 +13,9 @@ using NieGumex.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Xml;
 using System.Xml.Linq;
+using System.Text;
+using NieGumex.Infrastructure;
+using System.IO;
 
 namespace NieGumex.Controllers
 {
@@ -189,85 +192,38 @@ namespace NieGumex.Controllers
             base.Dispose(disposing);
         }
 
-        public async Task<ActionResult>FactureXML(int? id)
+        public ActionResult FactureXML(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Facture facture = await db.Facture.FindAsync(id);
-            if (facture == null)
-            {
-                return HttpNotFound();
-            }
 
-
-            //zapisuje xml z zwykłej faktury, ale dodaje też html'a z widoku FactureXML.. trzeba coś z tym returnem zrobić
+            //// zapisuje xml z zwykłej faktury, ale dodaje też html'a z widoku FactureXML.. trzeba coś z tym returnem zrobić
             var xmlFac = db.Facture.Where(a => a.FactureID == id).ToList();
 
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename = fakturka.xml");
-            Response.ContentType = "text/xml";
+            //Response.ClearContent();
+            //Response.Buffer = true;
+            //Response.AddHeader("content-disposition", "attachment; filename = fakturka.xml");
+            //Response.ContentType = "text/xml";
+
 
             var serializer = new
             System.Xml.Serialization.XmlSerializer(xmlFac.GetType());
-            serializer.Serialize(Response.OutputStream, xmlFac);
-            
-            return View();
 
-
-
-
-            //*******CIAPKOWE*************
-
-
-            //var factureName = db.Facture.OrderByDescending(a => a.FactureName).Where(v => v.FactureID == id);
-
-            //XElement xml = new XElement("Faktura",
-            //    new XElement("NrFaktury",
-            //        factureName),
-            //    new XElement("DataWystawienia",
-            //        "dddddddddd")
-            //);
-            //viewModel.EdiDoDekodowania = xml.ToString();
-
-            //using (XmlWriter writer = XmlWriter.Create("faktura.xml"))
+            string data;
+            //using (var ms = new MemoryStream())
             //{
-            //    writer.WriteStartElement("faktura");
-            //    writer.WriteElementString("NrFaktury", factureName.ToString());
-            //    writer.WriteElementString("DataWystawienia", "dddddddddd");
-            //    //writer.WriteElementString("NipSprzedawcy", fakturaEDIFact.NipSprzedawcy);
-            //    //writer.WriteElementString("ImieSprzedawcy", fakturaEDIFact.ImieSprzedawcy);
-            //    writer.WriteEndElement();
-            //    writer.Flush();
+            //    serializer.Serialize(ms, xmlFac);
+            //    data = ms.ToArray();
+
             //}
 
-        }
-
-        public ActionResult FakturaXML(int? id)
-        {
-
-            var factureName = db.Facture.OrderByDescending(a => a.FactureName).Where(v => v.FactureID == id);
-
-            XElement xml = new XElement("Faktura",
-                new XElement("NrFaktury",
-                    factureName),
-                new XElement("DataWystawienia",
-                    "dddddddddd")
-            );
-            //viewModel.EdiDoDekodowania = xml.ToString();
-
-            using (XmlWriter writer = XmlWriter.Create("faktura.xml"))
+            using (var ms = new StringWriter())
             {
-                writer.WriteStartElement("faktura");
-                writer.WriteElementString("NrFaktury", factureName.ToString());
-                //writer.WriteElementString("DataWystawienia", fakturaEDIFact.DataWystawienia.ToString());
-                //writer.WriteElementString("NipSprzedawcy", fakturaEDIFact.NipSprzedawcy);
-                //writer.WriteElementString("ImieSprzedawcy", fakturaEDIFact.ImieSprzedawcy);
-                writer.WriteEndElement();
-                writer.Flush();
+                serializer.Serialize(ms, xmlFac);
+                data = ms.ToString();
+
             }
+            ViewBag.falturka = data;
+
+            //return File(data, "text/xml", "Faktura.xml");
             return View();
         }
     }
