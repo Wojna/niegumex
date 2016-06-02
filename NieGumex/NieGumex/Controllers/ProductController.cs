@@ -172,5 +172,16 @@ namespace NieGumex.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult OponySuggestions(string term)
+        {
+            var games = this.db.Products.Where(a =>  a.Nazwa.ToLower().Contains(term.ToLower())).Take(5).Select(a => new { label = a.ProductID });
+            return Json(games, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult JQUI()
+        {
+            return View();
+        }
     }
 }

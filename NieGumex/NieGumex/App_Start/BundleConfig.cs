@@ -26,6 +26,12 @@ namespace NieGumex
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                "~/Content/themes/base/core.css",
+                "~/Content/themes/base/autocomplete.css",
+                "~/Content/themes/base/theme.css",
+                "~/Content/themes/base/menu.css")
+    );
         }
     }
 }

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - NieGumex aplikacja poswiecona zaliczeniu</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,11 +25,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Produkty","Index","Product")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li>@Html.ActionLink("Produkty", "Index", "Product")</li>
                     <li>@Html.ActionLink("Faktury", "Index", "Factures")</li>
-                    <li>@Html.ActionLink("Support","Support","Home")</li>
+                    <li>@Html.ActionLink("Support", "Support", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -11,6 +11,8 @@ using NieGumex.Contex;
 using NieGumex.Models;
 using NieGumex.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace NieGumex.Controllers
 {
@@ -61,7 +63,7 @@ namespace NieGumex.Controllers
         // GET: Factures/Create
         public ActionResult Create()
         {
-         
+
             var produkty = (List<ProductsVm>)Session["Koszyk"];
             var factureName = db.Facture.OrderByDescending(a => a.FactureName).FirstOrDefault()?.FactureName;
             var productFacture = produkty.Select(a => a.Nazwa).Single();
@@ -95,8 +97,8 @@ namespace NieGumex.Controllers
                 EAN = ean,
             };
 
-                Decimal kwVAT = cenaFactures - cenanettoFactures;
-                ViewBag.kwotVAT = kwVAT;
+            Decimal kwVAT = cenaFactures - cenanettoFactures;
+            ViewBag.kwotVAT = kwVAT;
 
             db.SaveChanges();
             return View(facture);
@@ -111,8 +113,8 @@ namespace NieGumex.Controllers
         {
             if (ModelState.IsValid)
             {
-                facture.DataPlatnosci=DateTime.Now;
-                facture.DataWystawienia=DateTime.Now;
+                facture.DataPlatnosci = DateTime.Now;
+                facture.DataWystawienia = DateTime.Now;
                 db.Facture.Add(facture);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -185,6 +187,88 @@ namespace NieGumex.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public async Task<ActionResult>FactureXML(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Facture facture = await db.Facture.FindAsync(id);
+            if (facture == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            //zapisuje xml z zwykłej faktury, ale dodaje też html'a z widoku FactureXML.. trzeba coś z tym returnem zrobić
+            var xmlFac = db.Facture.Where(a => a.FactureID == id).ToList();
+
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename = fakturka.xml");
+            Response.ContentType = "text/xml";
+
+            var serializer = new
+            System.Xml.Serialization.XmlSerializer(xmlFac.GetType());
+            serializer.Serialize(Response.OutputStream, xmlFac);
+            
+            return View();
+
+
+
+
+            //*******CIAPKOWE*************
+
+
+            //var factureName = db.Facture.OrderByDescending(a => a.FactureName).Where(v => v.FactureID == id);
+
+            //XElement xml = new XElement("Faktura",
+            //    new XElement("NrFaktury",
+            //        factureName),
+            //    new XElement("DataWystawienia",
+            //        "dddddddddd")
+            //);
+            //viewModel.EdiDoDekodowania = xml.ToString();
+
+            //using (XmlWriter writer = XmlWriter.Create("faktura.xml"))
+            //{
+            //    writer.WriteStartElement("faktura");
+            //    writer.WriteElementString("NrFaktury", factureName.ToString());
+            //    writer.WriteElementString("DataWystawienia", "dddddddddd");
+            //    //writer.WriteElementString("NipSprzedawcy", fakturaEDIFact.NipSprzedawcy);
+            //    //writer.WriteElementString("ImieSprzedawcy", fakturaEDIFact.ImieSprzedawcy);
+            //    writer.WriteEndElement();
+            //    writer.Flush();
+            //}
+
+        }
+
+        public ActionResult FakturaXML(int? id)
+        {
+
+            var factureName = db.Facture.OrderByDescending(a => a.FactureName).Where(v => v.FactureID == id);
+
+            XElement xml = new XElement("Faktura",
+                new XElement("NrFaktury",
+                    factureName),
+                new XElement("DataWystawienia",
+                    "dddddddddd")
+            );
+            //viewModel.EdiDoDekodowania = xml.ToString();
+
+            using (XmlWriter writer = XmlWriter.Create("faktura.xml"))
+            {
+                writer.WriteStartElement("faktura");
+                writer.WriteElementString("NrFaktury", factureName.ToString());
+                //writer.WriteElementString("DataWystawienia", fakturaEDIFact.DataWystawienia.ToString());
+                //writer.WriteElementString("NipSprzedawcy", fakturaEDIFact.NipSprzedawcy);
+                //writer.WriteElementString("ImieSprzedawcy", fakturaEDIFact.ImieSprzedawcy);
+                writer.WriteEndElement();
+                writer.Flush();
+            }
+            return View();
         }
     }
 }

@@ -7,31 +7,28 @@
 <h2>Index</h2>
 
 <body>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FactureName)
-        </th>
-        
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FactureName)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FactureName)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.FactureID }, new { @class = "btn btn-lg btn-success" })             
-            @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })            
-            @Html.ActionLink("Usuń", "Delete", new { id=item.FactureID }, new { @class = "btn btn-lg btn-success" })
-            @Html.ActionLink("EDIFACT", "Edifact", new { id = item.FactureID }, new { @class = "btn btn-default" })
-        </td>
-    </tr>
-}
-
-</table>
-
-   
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FactureName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                    @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                    @Html.ActionLink("EDIFACT", "Edifact", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                    @Html.ActionLink("XML", "FactureXML", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                </td>
+            </tr>
+        }
+    </table>
 </body>
