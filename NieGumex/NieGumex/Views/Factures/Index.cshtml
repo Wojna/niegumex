@@ -22,13 +22,61 @@
                     @Html.DisplayFor(modelItem => item.FactureName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edytuj", "Edit", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+
+                    <ul id="accordion">
+                        <li>
+                            <strong>Edytuj</strong><br />
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                        </li>
+                        <li>
+                            <strong>Szczegoly</strong><br />
+                            @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                        </li>
+                        <li>
+                            <strong>Usuń</strong><br />
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                        </li>
+                        <li>
+                            <strong>EDIFACT</strong><br />
+                            @Html.ActionLink("EDIFACT", "Edifact", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                        </li>
+                        <li>
+                            <strong>XML</strong><br />
+                           @Html.ActionLink("XML", "FactureXML", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                        </li>
+                    </ul>
+                    @*@Html.ActionLink("Edytuj", "Edit", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
                     @Html.ActionLink("Szczegoly", "Details", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
                     @Html.ActionLink("Usuń", "Delete", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
                     @Html.ActionLink("EDIFACT", "Edifact", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
-                    @Html.ActionLink("XML", "FactureXML", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })
+                    @Html.ActionLink("XML", "FactureXML", new { id = item.FactureID }, new { @class = "btn btn-lg btn-success" })*@
                 </td>
             </tr>
         }
     </table>
 </body>
+
+
+@section scripts {
+@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery-2.2.3.intellisense.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.14.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.14.js"></script>
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script src="~/Scripts/jquery-2.2.3.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            activeItem = $("#accordion li:first");
+            $(activeItem).addClass('active');
+
+            $("#accordion li").hover(function () {
+                $(activeItem).animate({ width: "50px" }, { duration: 300, queue: false });
+                $(this).animate({ width: "250px" }, { duration: 300, queue: false });
+                activeItem = this;
+            });
+
+        });
+    </script>
+    
+    }

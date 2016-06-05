@@ -373,7 +373,6 @@
     <Content Include="Views\Product\Cart.cshtml" />
     <Content Include="Views\Factures\Edifact.cshtml" />
     <Content Include="Views\Home\Support.cshtml" />
-    <Content Include="Views\Product\JQUI.cshtml" />
     <Content Include="Views\Factures\FactureXML.cshtml" />
     <None Include="Web.Darek.config">
       <DependentUpon>Web.config</DependentUpon>
